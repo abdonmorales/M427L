@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>M 427L • Course Archive</title>
+  <style>
+    :root {
+      --bg: #0b0d12;
+      --panel: #121620;
+      --text: #e6e8ee;
+      --muted: #9aa3b2;
+      --accent: #7aa2f7;
+      --border: #1e2430;
+      --ok: #6ee7b7;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background: radial-gradient(1200px 800px at 20% -10%, #11193a55, transparent 60%),
+                  radial-gradient(1000px 700px at 120% 10%, #1a342c40, transparent 60%),
+                  var(--bg);
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    header {
+      padding: 28px 20px 8px;
+    }
+    header h1 { margin: 0 0 6px; font-size: 1.6rem; }
+    header p { margin: 0; color: var(--muted); }
+
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 8px 20px 40px; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.15fr 1.85fr;
+      gap: 18px;
+    }
+    @media (max-width: 920px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      background: color-mix(in oklab, var(--panel) 94%, black 6%);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px 16px;
+      box-shadow: 0 10px 30px #0005 inset, 0 6px 24px #0006;
+    }
+    .card h2 { margin: 4px 0 12px; font-size: 1.2rem; }
+
+    /* README section */
+    #readme article h1 { font-size: 1.4rem; margin: 8px 0 4px; }
+    #readme article h2 { font-size: 1.05rem; color: var(--muted); margin: 2px 0 10px; font-weight: 600; }
+    #readme article h3 { font-size: 1.0rem; color: var(--muted); margin: 0 0 16px; font-weight: 600; }
+    #readme article p { line-height: 1.6; margin: 0 0 10px; }
+
+    /* File tree */
+    .tree { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
+    .tree details { padding-left: 10px; }
+    .tree details > summary {
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 6px;
+      border-radius: 8px;
+      outline: none;
+    }
+    .tree details > summary:hover { background: #1b2231; }
+    .summary-icon { width: 1.05em; }
+
+    .file { display: flex; align-items: center; gap: 6px; padding: 3px 6px 3px 26px; border-radius: 8px; }
+    .file:hover { background: #1b2231; }
+    .file a { overflow-wrap: anywhere; }
+
+    .icons { opacity: .9 }
+
+    /* Preview area */
+    .preview-head { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:8px; }
+    .path { color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .pill { border:1px solid var(--border); padding:6px 10px; border-radius:999px; }
+    .viewer {
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+      min-height: 420px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background: #0c101b;
+    }
+    iframe.viewer-frame, embed.viewer-frame {
+      width: 100%; height: 70vh; border: 0; background: #0c101b;
+    }
+    .empty { color: var(--muted); }
+
+    .legend { color: var(--muted); font-size: .9rem; margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>M 427L: Vector Calculus</h1>
+    <p>Summer 2025 • University of Texas at Austin • Dr. Alex Macedo</p>
+  </header>
+
+  <div class="wrap">
+    <div class="grid">
+      <!-- README / Course description -->
+      <section id="readme" class="card" aria-labelledby="readme-h2">
+        <h2 id="readme-h2">README.md</h2>
+        <article>
+          <h1>M 427L: Vector Calculus</h1>
+          <h2>Summer 2025, University of Texas at Austin</h2>
+          <h3>Dr. Alex Macedo</h3>
+          <p>We start the course with a discussion of curves and surfaces in <em>\u211d<sup>2</sup></em> and <em>\u211d<sup>3</sup></em>. To study those objects, we introduce tools such as matrices, inner products and the cross product.</p>
+          <p>We then proceed to develop calculus for scalar a vector-valued functions of several variables. In particular, we discuss their limits, derivatives and integrals.</p>
+          <p>We finish the course with Stokes’s theorem, which relates the integral over the boundary of a curve or surface <em>U</em> \u2282 <em>\u211d<sup>3</sup></em> to the integral of a suitable object over <em>U</em>.</p>
+        </article>
+        <p class="legend">This section renders the provided README content verbatim.</p>
+      </section>
+
+      <!-- Files / Tree + Preview -->
+      <section class="card" aria-labelledby="files-h2">
+        <h2 id="files-h2">Repository Files</h2>
+        <div class="grid" style="grid-template-columns: 1.1fr 1.9fr; gap: 14px;">
+          <div class="tree" id="tree" aria-label="File tree"></div>
+          <div>
+            <div class="preview-head">
+              <div class="path" id="selected-path">No file selected</div>
+              <div class="pill" id="open-links" hidden>
+                <a id="direct-link" target="_blank" rel="noopener">Open</a>
+                &nbsp;&middot;&nbsp;
+                <a id="download-link" download>Download</a>
+              </div>
+            </div>
+            <div class="viewer" id="viewer">
+              <div class="empty">Choose a file from the tree to preview (PDF & images supported).</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    // --- Data model of the project tree ---
+    // Each node: { name: string, type: 'dir'|'file', children?: Node[] }
+    const TREE = { name: ".", type: "dir", children: [
+      { name: "Analysis On Manifolds (Munkres).pdf", type: "file" },
+      { name: "Calculus Early Transcendentals 9th Edition by James Stewart, Daniel K. Clegg, Saleem Watson, Lothar Redlin.pdf", type: "file" },
+      { name: "Homework", type: "dir", children: [
+        { name: "HW01-problems.pdf", type: "file" },
+        { name: "HW01-solutions.pdf", type: "file" },
+        { name: "HW02-problems.pdf", type: "file" },
+        { name: "HW02-solutions.pdf", type: "file" },
+        { name: "HW03-problems.pdf", type: "file" },
+        { name: "HW03-solutions.pdf", type: "file" },
+        { name: "HW04-problems.pdf", type: "file" },
+        { name: "HW04-solutions.pdf", type: "file" },
+        { name: "HW05 (due Saturday, not Sunday)-problems.pdf", type: "file" },
+        { name: "HW05 (due Saturday, not Sunday)-solutions.pdf", type: "file" },
+        { name: "HW06-problems.pdf", type: "file" },
+        { name: "HW06-solutions.pdf", type: "file" },
+        { name: "HW07 (due Saturday!)-problems.pdf", type: "file" },
+        { name: "HW07 (due Saturday!)-solutions.pdf", type: "file" },
+        { name: "HW08 (due Thursday!)-solutions.pdf", type: "file" },
+        { name: "hw01.m", type: "file" },
+        { name: "hw02.m", type: "file" },
+        { name: "question10Figure.fig", type: "file" }
+      ]},
+      { name: "Instructor’s Solutions Manuals for Calculus Early Transcendentals 9th Edition.pdf", type: "file" },
+      { name: "Linear Algebra and Its Application.pdf", type: "file" },
+      { name: "Notes", type: "dir", children: [
+        { name: "M 427L Vector Calculus 07212025.pdf", type: "file" },
+        { name: "M 427L Vector Calculus Note I.pdf", type: "file" },
+        { name: "M 427L Vector Calculus Notes II.pdf", type: "file" },
+        { name: "M 427L Vector Calculus-07112025.pdf", type: "file" },
+        { name: "M 427L Vector Calculus-Final.goodnotes", type: "file" },
+        { name: "M 427L Vector Calculus-Final.pdf", type: "file" }
+      ]},
+      { name: "Quizzes", type: "dir", children: [
+        { name: "M 427L - Quiz 1 (am226923).pdf", type: "file" },
+        { name: "M 427L Quiz #2.pdf", type: "file" },
+        { name: "M 427L Quiz #3.pdf", type: "file" },
+        { name: "M 427L Quiz #4 - am226923.textClipping", type: "file" },
+        { name: "M 427L Quiz #5.pdf", type: "file" },
+        { name: "M 427L Quiz #6.pdf", type: "file" },
+        { name: "M 427L Quiz #7-am226923.pdf", type: "file" },
+        { name: "M 427L Quiz #8.pdf", type: "file" },
+        { name: "M 427L Quiz #9.pdf", type: "file" },
+        { name: "Q1-Quiz6.fig", type: "file" },
+        { name: "Q1-Quiz6.gcx", type: "file" },
+        { name: "Q1_Quiz6.m", type: "file" },
+        { name: "Q2-Quiz6.fig", type: "file" },
+        { name: "Q2_Quiz6.m", type: "file" },
+        { name: "Q3-Quiz6.fig", type: "file" },
+        { name: "Q3_Quiz6.m", type: "file" },
+        { name: "Quiz 0723.pdf", type: "file" },
+        { name: "Quiz 0724.pdf", type: "file" },
+        { name: "Quiz 0729.pdf", type: "file" },
+        { name: "Quiz 0806.gcx", type: "file" },
+        { name: "Quiz 0806.pdf", type: "file" },
+        { name: "Quiz 0807.pdf", type: "file" },
+        { name: "Quiz 0813.pdf", type: "file" },
+        { name: "quiz2.m", type: "file" }
+      ]},
+      { name: "README.md", type: "file" },
+      { name: "Review Sets", type: "dir", children: [
+        { name: "Final Review II.png", type: "file" },
+        { name: "Final practice.pdf", type: "file" },
+        { name: "Review set - trig integrals-problems.pdf", type: "file" },
+        { name: "Review set - trig integrals-solutions.pdf", type: "file" },
+        { name: "Review set 1_ determinants-problems.pdf", type: "file" },
+        { name: "Review set 1_ determinants-solutions.pdf", type: "file" },
+        { name: "Review set 2 - Derivatives-problems.pdf", type: "file" },
+        { name: "Review set 2 - Derivatives-solutions.pdf", type: "file" },
+        { name: "Review set 3 - single variable integrals-problems.pdf", type: "file" },
+        { name: "Review set 3 - single variable integrals-solutions.pdf", type: "file" },
+        { name: "Review set 4 - double_triple integrals -problems.pdf", type: "file" },
+        { name: "Review set 4 - double_triple integrals -solutions.pdf", type: "file" },
+        { name: "final practice solutions.pdf", type: "file" }
+      ]},
+      { name: "Vector Calculus - Tromba and Marsden.pdf", type: "file" }
+    ] };
+
+    // Build a URL-safe path from path segments
+    function encodePath(segments) {
+      return segments.map(s => encodeURIComponent(s)).join('/')
+        // GitHub Pages sometimes double-encodes spaces in anchors; keep clean
+        .replace(/%20/g, ' ');
+    }
+
+    function isPreviewableByIframe(ext) {
+      return ['pdf','png','jpg','jpeg','gif','webp','svg'].includes(ext);
+    }
+
+    // Render the tree recursively
+    function renderTree(node, parentEl, path = []) {
+      if (node.type === 'dir') {
+        const details = document.createElement('details');
+        // Open the top-level automatically
+        if (path.length === 0) details.open = true;
+        const summary = document.createElement('summary');
+        summary.innerHTML = `<span class="icons summary-icon">📁</span><span>${node.name}</span>`;
+        details.appendChild(summary);
+        const container = document.createElement('div');
+        (node.children || []).forEach(child => renderTree(child, container, path.concat(node.name === '.' ? [] : [node.name])));
+        details.appendChild(container);
+        parentEl.appendChild(details);
+      } else {
+        const fullPath = (path.length ? path.concat(node.name) : [node.name]);
+        const href = encodePath(fullPath);
+        const row = document.createElement('div');
+        row.className = 'file';
+        const a = document.createElement('a');
+        a.href = href;
+        a.textContent = node.name;
+        a.addEventListener('click', (e) => {
+          e.preventDefault();
+          onFileSelected(fullPath, node);
+        });
+        const icon = document.createElement('span');
+        icon.className = 'icons';
+        icon.textContent = '📄';
+        row.appendChild(icon);
+        row.appendChild(a);
+        parentEl.appendChild(row);
+      }
+    }
+
+    // Tree callback (exposed for custom integrations if needed)
+    function onFileSelected(pathSegments, meta) {
+      const rel = encodePath(pathSegments);
+      const fileName = pathSegments[pathSegments.length - 1];
+      const ext = fileName.split('.').pop().toLowerCase();
+
+      document.getElementById('selected-path').textContent = './' + pathSegments.join('/');
+      const openLinks = document.getElementById('open-links');
+      const direct = document.getElementById('direct-link');
+      const dl = document.getElementById('download-link');
+      direct.href = rel; dl.href = rel; openLinks.hidden = false;
+
+      const host = document.getElementById('viewer');
+      host.innerHTML = '';
+
+      if (isPreviewableByIframe(ext)) {
+        const frame = document.createElement(ext === 'pdf' ? 'embed' : 'iframe');
+        frame.className = 'viewer-frame';
+        frame.src = rel;
+        if (ext === 'pdf') frame.type = 'application/pdf';
+        host.appendChild(frame);
+      } else {
+        const box = document.createElement('div');
+        box.style.padding = '16px';
+        box.innerHTML = `
+          <p>Preview not available for <strong>${fileName}</strong>.</p>
+          <p>
+            <a href="${rel}" target="_blank" rel="noopener" class="pill">Open in new tab</a>
+            &nbsp;<span class="muted">or</span>&nbsp;
+            <a href="${rel}" download class="pill">Download</a>
+          </p>`;
+        host.appendChild(box);
+      }
+
+      // Custom hook example: emit an event for external scripts
+      const ev = new CustomEvent('tree:fileSelected', { detail: { path: pathSegments, meta } });
+      window.dispatchEvent(ev);
+    }
+
+    // Mount
+    renderTree(TREE, document.getElementById('tree'));
+
+    // Expose the callback globally (per request)
+    window.onFileSelected = onFileSelected;
+  </script>
+</body>
+</html>
